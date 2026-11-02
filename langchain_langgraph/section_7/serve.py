@@ -32,8 +32,7 @@ chain= prompt|llm|str
 
 
 add_routes(
-app,chain,path='/chain'
-)
+app,chain,path='/chain')
 if __name__=='__main__':
     import uvicorn
     uvicorn.run(app,host='localhost',port=8000)
