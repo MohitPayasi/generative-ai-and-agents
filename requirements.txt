@@ -1,45 +1,9 @@
-# ===== LangChain Ecosystem =====
-langchain
-langchain_community
-langchain-openai
-langchain-groq
-langchain-anthropic
-langchain-google-genai
-langchain-text-splitters
-langserve[all]
-
-# ===== LangGraph & LangSmith =====
-langgraph
-langsmith
-
-# ===== LLM Providers =====
-openai
-anthropic
-google-generativeai
-groq
-
-# ===== Vector Databases =====
-faiss-cpu
-chromadb
-pinecone-client
-
-# ===== Embeddings =====
-sentence-transformers
-
-# ===== HuggingFace =====
-transformers
-datasets
-huggingface-hub
-
-# ===== Deep Learning =====
-tensorflow
-keras
-
 # ===== Data Science Core =====
 numpy
 pandas
 scipy
 statsmodels
+joblib
 
 # ===== Machine Learning =====
 scikit-learn
@@ -47,23 +11,65 @@ xgboost
 lightgbm
 catboost
 
+# ===== Deep Learning =====
+tensorflow
+keras
+
 # ===== Visualization =====
 matplotlib
 seaborn
 plotly
 
-# ===== Jupyter =====
+# ===== Jupyter Environment =====
 jupyter
 notebook
 ipykernel
+ipywidgets
 
-# ===== Utilities =====
+# ===== LLM Providers =====
+openai
+anthropic
+google-genai
+google-generativeai
+groq
+
+# ===== LangChain Ecosystem =====
+langchain
+langchain-community
+langchain-core
+langchain-openai
+langchain-groq
+langchain-anthropic
+langchain-google-genai
+langchain-huggingface
+langchain-chroma
+langchain-text-splitters
+langserve[all]
+
+# ===== LangGraph & LangSmith =====
+langgraph
+langsmith
+
+# ===== Search, Tools & Embeddings =====
+wikipedia
+duckduckgo-search
+tavily-python
+beautifulsoup4
+sentence-transformers
+transformers
+datasets
+huggingface-hub
+
+# ===== Vector Databases =====
+faiss-cpu
+chromadb
+
+# ===== Web & Utilities =====
+fastapi
+uvicorn
 python-dotenv
 pydantic
 pydantic-settings
 requests
 tqdm
-
-python-dotenv
-sentence-transformers
-langchain_huggingface
+pip
