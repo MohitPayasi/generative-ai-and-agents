@@ -37,10 +37,12 @@ mohit_payasi/
 │   ├── 1.2ollama/              # Local LLMs & Embeddings via Ollama
 │   └── README.md
 │
-├── langchain_langgraph/        # End-to-End RAG, Embeddings, Ingestion & LCEL
+├── langchain_langgraph/        # End-to-End RAG, Embeddings, Ingestion, LCEL & Agents
 │   ├── introduction/           # Document Ingestion, HF Embeddings & LangGraph Memory
 │   ├── section_6/              # Production RAG pipeline with Groq LLM & FAISS
-│   ├── section_7/              # Declarative LCEL (LangChain Expression Language) Chains
+│   ├── section_7/              # Declarative LCEL Chains & LangServe REST Deployment
+│   ├── section_8/              # Stateful Chatbots with Conversation History & Trim Messages
+│   ├── section_10/             # Modern LangChain: Dynamic Models, Messages, Tools, Structured Output & Agents
 │   └── README.md
 │
 ├── langraphproject/            # Production Agent Systems built with LangGraph
@@ -86,9 +88,11 @@ mohit_payasi/
 * **Embedding Providers**: OpenAI (`text-embedding-3-small`) and open-source HuggingFace models (`sentence-transformers/all-MiniLM-L6-v2`).
 * **Vector Stores**: Dense semantic indexing and search using **FAISS** and **ChromaDB**.
 
-### 2. End-to-End RAG & LCEL (`langchain_langgraph/`)
+### 2. End-to-End RAG, LCEL & Modern LangChain (`langchain_langgraph/`)
 * **RAG Pipeline (Section 6)**: Production Question-Answering system connecting Groq LLM, FAISS retriever, and structured prompt templates.
-* **Modern LCEL (Section 7)**: Declarative pipeline construction with Unix-style pipe syntax (`prompt | model | parser`), supporting streaming, batching, and async operations.
+* **Modern LCEL & Serving (Section 7)**: Declarative pipeline construction with Unix-style pipe syntax (`prompt | model | parser`) and FastAPI/LangServe endpoints (`serve.py`).
+* **Stateful Chatbots (Section 8)**: Session-based conversation memory with `ChatMessageHistory`, `RunnableWithMessageHistory`, and context window management with `trim_messages`.
+* **LangChain 0.3 Core & Agents (Section 10)**: Provider-agnostic model initialization (`init_chat_model`), structured JSON schema extraction with Pydantic, execution modes (`invoke`, `batch`, `stream`), custom `@tool` creation, and autonomous agent loops with `create_agent`.
 * **State Checkpointing**: Thread management using `langgraph.checkpoint.memory.MemorySaver`.
 * 👉 Check out [`langchain_langgraph/README.md`](./langchain_langgraph/README.md) for full module documentation.
 
