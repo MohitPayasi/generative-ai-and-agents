@@ -4,6 +4,83 @@
     "python.terminal.useEnvFile": true,
     "python.envFile": "${workspaceFolder}/.env",
     "jupyter.defaultKernel": "mohit_payasi_env",
+    "python.languageServer": "Pylance",
+    "editor.semanticHighlighting.enabled": true,
+    "notebook.cellEditorOptionsCustomizations": {
+        "editor.semanticHighlighting.enabled": true
+    },
+    "editor.tokenColorCustomizations": {
+        "[Visual Studio Light]": {
+            "keywords": "#0000FF",
+            "functions": "#795E26",
+            "strings": "#A31515",
+            "comments": "#008000",
+            "variables": "#001080",
+            "numbers": "#098658",
+            "textMateRules": [
+                {
+                    "scope": [
+                        "keyword",
+                        "keyword.control",
+                        "keyword.operator.logical.python",
+                        "keyword.control.flow.python",
+                        "keyword.control.import.python",
+                        "storage.type",
+                        "storage.modifier"
+                    ],
+                    "settings": {
+                        "foreground": "#D73A49",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": [
+                        "entity.name.function",
+                        "support.function"
+                    ],
+                    "settings": {
+                        "foreground": "#6F42C1"
+                    }
+                }
+            ]
+        },
+        "[Default Dark Modern]": {
+            "keywords": "#C586C0",
+            "functions": "#DCDCAA",
+            "strings": "#CE9178",
+            "comments": "#6A9955",
+            "variables": "#9CDCFE",
+            "textMateRules": [
+                {
+                    "scope": [
+                        "keyword",
+                        "keyword.control",
+                        "storage.type",
+                        "storage.modifier"
+                    ],
+                    "settings": {
+                        "foreground": "#C586C0",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "keywords": "#D73A49",
+        "textMateRules": [
+            {
+                "scope": [
+                    "keyword",
+                    "keyword.control",
+                    "storage.type",
+                    "storage.modifier"
+                ],
+                "settings": {
+                    "foreground": "#D73A49",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
     "editor.quickSuggestions": {
         "other": "on",
         "comments": "off",
