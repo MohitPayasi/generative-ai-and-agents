@@ -136,8 +136,8 @@ mohit_payasi/
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/MohitPayasi/mohit_payasi.git
-cd mohit_payasi
+git clone https://github.com/MohitPayasi/generative-ai-and-agents.git
+cd generative-ai-and-agents
 ```
 
 ### 2. Create Virtual Environment
@@ -195,4 +195,4 @@ LANGCHAIN_TRACING_V2=true
 
 **Mohit Payasi**
 * GitHub: [@MohitPayasi](https://github.com/MohitPayasi)
-* Repository: [mohit_payasi](https://github.com/MohitPayasi/mohit_payasi)
+* Repository: [generative-ai-and-agents](https://github.com/MohitPayasi/generative-ai-and-agents)
