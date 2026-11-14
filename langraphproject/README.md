@@ -1,156 +1,105 @@
-# 🦜🔗 LangGraph Project
+# 🕸️ LangGraph Agent Systems & Workflows
 
-A modular, production-ready **LangGraph** agent project built with LangChain, Google Gemini, and LangSmith observability.
+A modular, production-ready **LangGraph** repository showcasing stateful conversational agents, multi-agent supervisor systems, tool-augmented graphs, and end-to-end observability via **LangSmith**.
 
 ---
 
-## 📁 Project Structure
+## 📌 Direct GitHub Notebook Links
 
+Quickly access individual agent implementations:
+
+| Module / Topic | Notebook / File | Core Concepts Covered | Key Components |
+| :--- | :--- | :--- | :--- |
+| **Standalone StateGraph Agent** | [`main.py`](./main.py) | Standalone command-line agent with state nodes, conditional routing & LangSmith | `StateGraph`, `START`, `END`, Google Gemini |
+| **Graph Fundamentals** | [`basic_chat_1.ipynb`](./basic_chat/basic_chat_1.ipynb) | Typed state schema, computational nodes, directional edges, graph compilation | `TypedDict`, `StateGraph`, `ChatGroq` |
+| **Observability & Tools** | [`debug_monitoring.ipynb`](./basic_chat/debug_monitoring.ipynb) | Dynamic model initialization, token metadata tracing, custom lifecycle callbacks, `ToolNode` | `init_chat_model`, `ToolNode`, `tools_condition` |
+| **Multi-Agent Collaboration** | [`multiaiagent.ipynb`](./basic_chat/multiaiagent.ipynb) | Multi-agent coordination, specialized agent roles, and message routing | `StateGraph`, `HumanMessage`, `AIMessage` |
+| **Supervisor Multi-Agent System** | [`super_multi_ai_agent.ipynb`](./basic_chat/super_multi_ai_agent.ipynb) | Supervisor-worker architecture: dynamic planning, task delegation, researcher node, state loop & memory | `MessagesState`, `MemorySaver`, Supervisor routing |
+
+---
+
+## 🗂️ Directory Structure
+
+```text
+langraphproject/
+├── basic_chat/                           # Practical agent notebooks & patterns
+│   ├── basic_chat_1.ipynb                # StateGraph fundamentals (State, Nodes, Edges)
+│   ├── debug_monitoring.ipynb           # Dynamic init_chat_model, callbacks & ToolNode
+│   ├── multiaiagent.ipynb                # Multi-agent role specialization
+│   ├── super_multi_ai_agent.ipynb        # Supervisor pattern with planning & MemorySaver
+│   └── README.md                         # Detailed basic_chat module documentation
+│
+├── main.py                               # Production StateGraph Agent entry point
+├── pyproject.toml                        # Build system & package metadata
+├── requirements.txt                      # Project dependencies
+└── README.md                             # LangGraph module documentation
 ```
-langraph project/
-├── main.py            # Entry point — builds & runs the StateGraph agent
-├── requirements.txt   # All Python dependencies
-├── pyproject.toml     # Build system & project metadata
-└── README.md          # This file
+
+---
+
+## 🚀 Key Architectural Patterns
+
+### 1. Strongly Typed State (`TypedDict` & `MessagesState`)
+* Enforces strict type contracts between agent graph nodes.
+* Seamlessly reduces message histories using `add_messages` reducer to prevent manual state slicing.
+
+### 2. Supervisor-Worker Pattern (`super_multi_ai_agent.ipynb`)
+```mermaid
+flowchart TD
+    User([User Request]) --> Supervisor[Supervisor Agent]
+    Supervisor -->|Plan & Assign| Worker[Specialized Worker: Researcher]
+    Worker -->|Return Output| Supervisor
+    Supervisor -->|Task Incomplete| Worker
+    Supervisor -->|Task Complete| Summary[Final Synthesis]
+    Summary --> EndNode([User Response])
 ```
+* **Supervisor**: Formulates the execution plan, delegates tasks to domain-specific worker agents, and monitors iteration thresholds.
+* **Worker (Researcher)**: Performs targeted analysis and returns structured outputs to the shared graph state.
+* **Memory Checkpointing**: State persistence across turns using `MemorySaver`.
+
+### 3. Dynamic Tool Calling & Auto-Routing (`debug_monitoring.ipynb`)
+* Integrates `@tool` decorated functions with LangGraph's prebuilt `ToolNode`.
+* Uses `tools_condition` conditional edges to seamlessly toggle between tool execution and conversational responses.
+
+### 4. Full Observability with LangSmith
+* Automatic distributed tracing of every node invocation, token count, latency metric, and LLM call metadata.
 
 ---
 
-## 🚀 Features
+## ⚙️ Setup & Execution
 
-- ✅ **LangGraph StateGraph** — Multi-node graph with conditional routing
-- ✅ **Google Gemini LLM** — Powered by `gemini-1.5-flash`
-- ✅ **LangSmith Tracing** — Full observability for every run
-- ✅ **TypedDict State** — Strongly typed shared state across nodes
-- ✅ **Modular Design** — Easy to extend with tools, memory, and more nodes
-- ✅ **dotenv Support** — API keys loaded securely from `.env`
-
----
-
-## ⚙️ Setup
-
-### 1. Clone / Navigate to project
-
+### 1. Navigate to Project
 ```bash
-cd "langraph project"
+cd langraphproject
 ```
 
-### 2. Create virtual environment
-
+### 2. Create Virtual Environment
 ```bash
-python -m venv venv
 # Windows
+python -m venv venv
 venv\Scripts\activate
-# Linux/Mac
+
+# Linux / macOS
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3. Install dependencies
-
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-Or using `pyproject.toml`:
-
-```bash
-pip install -e ".[all]"
-```
-
-### 4. Configure environment variables
-
-Create a `.env` file in the project root:
-
+### 4. Configure Environment Variables
+Ensure your `.env` contains:
 ```env
-GOOGLE_API_KEY=your_google_api_key_here
-LANGSMITH_API_KEY=your_langsmith_api_key_here
-OPENAI_API_KEY=your_openai_api_key_here      # optional
-GROQ_API_KEY=your_groq_api_key_here          # optional
-ANTHROPIC_API_KEY=your_anthropic_api_key_here # optional
+GROQ_API_KEY=your_groq_api_key
+GOOGLE_API_KEY=your_gemini_api_key
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=your_langsmith_api_key
+LANGCHAIN_PROJECT=langgraph-agent-systems
 ```
 
----
-
-## ▶️ Run
-
+### 5. Run the Standalone Agent
 ```bash
 python main.py
 ```
-
-**Expected output:**
-
-```
-==================================================
-  LangGraph Agent - Starting...
-==================================================
-
-[USER]: What is LangGraph and why is it useful?
-
-[AI]: LangGraph is a library built on top of LangChain...
-
-==================================================
-  Done.
-==================================================
-```
-
----
-
-## 🧠 How It Works
-
-### State
-
-```python
-class AgentState(TypedDict):
-    messages: Annotated[List[BaseMessage], operator.add]
-    next_step: str
-```
-
-All nodes read from and write to this shared state dictionary.
-
-### Graph Flow
-
-```
-START → llm_node → [router] → END
-```
-
-| Node | Purpose |
-|------|---------|
-| `llm_node` | Calls the LLM with current messages |
-| `router` | Reads `next_step` to decide routing |
-
-### Extending the Graph
-
-Add a new node and connect it:
-
-```python
-workflow.add_node("my_tool_node", my_tool_function)
-workflow.add_edge("llm_node", "my_tool_node")
-workflow.add_edge("my_tool_node", END)
-```
-
----
-
-## 📦 Key Dependencies
-
-| Package | Purpose |
-|---------|---------|
-| `langgraph` | Graph-based agent orchestration |
-| `langchain-google-genai` | Google Gemini LLM integration |
-| `langsmith` | Observability & tracing |
-| `python-dotenv` | Secure env variable loading |
-| `pydantic` | Data validation |
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Add tool nodes (web search, calculator)
-- [ ] Add memory (checkpointing with SQLite)
-- [ ] Add multi-agent subgraph support
-- [ ] Add Streamlit / FastAPI interface
-
----
-
-## 📄 License
-
-MIT © Mohit Payasi

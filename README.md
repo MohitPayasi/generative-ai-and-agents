@@ -5,7 +5,7 @@
 [![LangGraph](https://img.shields.io/badge/🕸️_LangGraph-StateGraph-orange.svg)](https://langchain-ai.github.io/langgraph/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-teal.svg)](https://fastapi.tiangolo.com/)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 > A modular, hands-on repository containing production-grade architectures, agentic workflows, declarative LCEL pipelines, RAG systems, and fundamental Machine Learning algorithms.
 
@@ -16,11 +16,11 @@
 - [🗂️ Repository Architecture](#️-repository-architecture)
 - [🧩 Modules Overview](#-modules-overview)
   - [1. LangChain Fundamentals (`1-langchain_basic/`)](#1-langchain-fundamentals-1-langchain_basic)
-  - [2. End-to-End RAG & LCEL (`langchain_langgraph/`)](#2-end-to-end-rag--lcel-langchain_langgraph)
+  - [2. End-to-End RAG, LCEL & Modern LangChain (`langchain_langgraph/`)](#2-end-to-end-rag-lcel--modern-langchain-langchain_langgraph)
   - [3. Agentic Systems with LangGraph (`langraphproject/`)](#3-agentic-systems-with-langgraph-langraphproject)
   - [4. Advanced LangChain Features (`project/`)](#4-advanced-langchain-features-project)
   - [5. API Serving & Deployment (`practice/`)](#5-api-serving--deployment-practice)
-  - [6. Machine Learning Foundations (`Machine_learning/`)](#6-machine-learning-foundations-machine_learning)
+  - [6. Machine Learning Foundations & Industry Projects (`Machine_learning/`)](#6-machine-learning-foundations--industry-projects-machine_learning)
 - [⚡ Quick Start & Setup](#-quick-start--setup)
 - [🔑 Environment Variables](#-environment-variables)
 - [🛠️ Tech Stack](#️-tech-stack)
@@ -46,35 +46,41 @@ mohit_payasi/
 │   └── README.md
 │
 ├── langraphproject/            # Production Agent Systems built with LangGraph
-│   ├── basic_chat/             # StateGraph Nodes, Edges, State & LangSmith Observability
+│   ├── basic_chat/             # StateGraph Nodes, Observability & Supervisor Multi-Agent System
 │   ├── main.py                 # Standalone StateGraph Agent with Gemini & LangSmith
 │   └── README.md
 │
 ├── project/                    # Advanced LangChain Core Features
 │   ├── project_1/              # Core Blocks: Tools, Middleware, Structured Output, Streaming
+│   ├── chatbot.ipynb           # Token usage metadata & reasoning inspection
 │   └── README.md
 │
 ├── practice/                   # Deployment, Web APIs & Serving
 │   ├── chat_bot.py             # FastAPI + LangServe API server for LCEL chains
 │   ├── fast_api.py             # FastAPI service with Windows UTF-8 banner fix
-│   ├── chatbot.ipynb           # Interactive prompt & model testing
+│   ├── chatbot.ipynb           # Interactive prompt, translation & model testing
 │   └── README.md
 │
-├── Machine_learning/           # Fundamental ML & Data Science Notebooks
-│   ├── class_2.ipynb           # Descriptive Statistics & Data Summaries
-│   ├── class_3.ipynb           # Exploratory Data Analysis (EDA) & Seaborn
-│   ├── class_4.ipynb           # Feature Engineering & Categorical Encoding
-│   ├── class_5.ipynb           # Outlier Detection, Boxplots & Z-Score Analysis
-│   ├── class_6.ipynb           # Simple Linear Regression
-│   ├── class_7.ipynb           # Multiple Linear Regression & Error Metrics
+├── Machine_learning/           # Fundamental ML & Industry Projects
+│   ├── class/                  # Statistics, EDA, Outliers, Regression, GD from scratch, VIF
+│   │   ├── class_2.ipynb to class_9.ipynb
+│   ├── project/
+│   │   └── Linear_regression/  # End-to-End Used Bike Resale Price Estimation project
 │   └── README.md
 │
 ├── scripts/                    # Automation & developer utility scripts
-│   └── auto_commit.ps1         # Periodic sync utility
+│   ├── auto_commit.ps1         # Periodic git sync utility
+│   ├── update_notebook.py      # Notebook maintenance utility
+│   ├── update_notebook.ps1     # PowerShell maintenance wrapper
+│   └── README.md
+│
+├── .github/workflows/          # GitHub Actions continuous integration
+│   └── lint.yml                # Python syntax sanity check
 │
 ├── .env.example                # Template for LLM and Observability credentials
 ├── pyproject.toml              # Unified package configuration
 ├── requirements.txt            # Project dependencies
+├── LICENSE                     # MIT Open Source License
 └── README.md                   # Repository overview
 ```
 
@@ -87,6 +93,7 @@ mohit_payasi/
 * **Text Chunking**: Comparisons between `CharacterTextSplitter` and `RecursiveCharacterTextSplitter`.
 * **Embedding Providers**: OpenAI (`text-embedding-3-small`) and open-source HuggingFace models (`sentence-transformers/all-MiniLM-L6-v2`).
 * **Vector Stores**: Dense semantic indexing and search using **FAISS** and **ChromaDB**.
+* 👉 Check out [`1-langchain_basic/README.md`](./1-langchain_basic/README.md) for full module documentation.
 
 ### 2. End-to-End RAG, LCEL & Modern LangChain (`langchain_langgraph/`)
 * **RAG Pipeline (Section 6)**: Production Question-Answering system connecting Groq LLM, FAISS retriever, and structured prompt templates.
@@ -99,23 +106,29 @@ mohit_payasi/
 ### 3. Agentic Systems with LangGraph (`langraphproject/`)
 * **StateGraph Architecture**: Cyclic graphs with shared `TypedDict` state schemas.
 * **Routing**: Dynamic branch execution using conditional edges and function tools.
+* **Supervisor-Worker Pattern**: Multi-agent coordination with planning, delegation to specialized researcher agents, iteration counters, and memory checkpointing.
 * **Model Dynamic Initialization**: Provider switching with `init_chat_model()`.
 * **Observability**: Production monitoring, latency tracing, and token tracking with **LangSmith**.
+* 👉 Check out [`langraphproject/README.md`](./langraphproject/README.md) for full module documentation.
 
 ### 4. Advanced LangChain Features (`project/`)
 * **Structured Output**: Extracting schema-validated JSON directly into Pydantic models with `.with_structured_output()`.
 * **Custom Tools**: Equipping agents with external execution capabilities via `@tool` decorators.
 * **Lifecycle Callbacks**: Custom middleware handlers (`BaseCallbackHandler`) intercepting `on_llm_start`, `on_llm_end`, and `on_llm_error`.
+* 👉 Check out [`project/README.md`](./project/README.md) for full module documentation.
 
 ### 5. API Serving & Deployment (`practice/`)
 * **FastAPI + LangServe**: Exposing LCEL chains as production REST endpoints with automated OpenAPI docs and interactive web playgrounds (`/rag_chain/playground`).
 * **Platform Hardening**: Windows UTF-8 command-line encoding resolutions for seamless server boots.
+* 👉 Check out [`practice/README.md`](./practice/README.md) for full module documentation.
 
-### 6. Machine Learning Foundations (`Machine_learning/`)
-* **Statistics & EDA**: Univariate/multivariate analysis, correlation matrices, and distribution analysis with Pandas and Seaborn.
-* **Data Preparation**: Label encoding, one-hot encoding, and outlier filtering using IQR and Z-scores.
-* **Regression Modeling**: Simple and Multiple Linear Regression implementations from scratch and using Scikit-Learn.
-* 👉 Check out [`Machine_learning/README.md`](./Machine_learning/README.md) for full syllabus breakdown.
+### 6. Machine Learning Foundations & Industry Projects (`Machine_learning/`)
+* **Statistics & EDA (Classes 2-5)**: Univariate/multivariate analysis, correlation matrices, boxplots, and outlier filtering using IQR and Z-scores.
+* **Linear Regression & Evaluation (Classes 6-7)**: Simple and Multiple Linear Regression models with train-test split, weights analysis, and metrics ($R^2$, MSE, RMSE).
+* **Algorithms from Scratch (Class 8)**: Custom Gradient Descent optimization engine evaluating epoch loss progression on multivariate regression.
+* **Feature Selection & VIF (Class 9)**: Detecting severe multicollinearity using Variance Inflation Factor (VIF).
+* **End-to-End Industry Project**: Used Bike Resale Price Estimation (`project/Linear_regression/`) featuring raw data audit, sanitization, regression modeling, and serialized artifact export (`.joblib`).
+* 👉 Check out [`Machine_learning/README.md`](./Machine_learning/README.md) for full module documentation.
 
 ---
 
@@ -173,7 +186,7 @@ LANGCHAIN_TRACING_V2=true
 | **Model Providers** | Groq (Llama 3, Mixtral), Google Gemini, OpenAI, Ollama |
 | **Embeddings & Vector Stores** | HuggingFace Sentence Transformers, FAISS, ChromaDB |
 | **Backend & Serving** | FastAPI, Uvicorn, Pydantic |
-| **Data Science & ML** | Scikit-Learn, NumPy, Pandas, Matplotlib, Seaborn, SciPy |
+| **Data Science & ML** | Scikit-Learn, NumPy, Pandas, Matplotlib, Seaborn, SciPy, Statsmodels, Joblib |
 | **Monitoring & Tracing** | LangSmith |
 
 ---

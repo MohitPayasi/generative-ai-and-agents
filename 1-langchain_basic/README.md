@@ -4,6 +4,22 @@ This module covers the foundational building blocks of **Retrieval-Augmented Gen
 
 ---
 
+## 📌 Direct GitHub Notebook Links
+
+Quickly access individual foundational notebooks:
+
+| Module / Topic | Notebook / File | Core Concepts Covered | Key Libraries |
+| :--- | :--- | :--- | :--- |
+| **Document Loaders** | [`data_ingestion.ipynb`](./1.1open_ai/data_ingestion.ipynb) | `TextLoader`, `PyPDFLoader`, and `WebBaseLoader` for parsing documents | `pypdf`, `beautifulsoup4`, `langchain` |
+| **Text Chunking** | [`data_spitter.ipynb`](./1.1open_ai/data_spitter.ipynb) | Fixed vs. recursive splitting with `chunk_size` and `chunk_overlap` | `langchain-text-splitters` |
+| **OpenAI Embeddings** | [`open_ai_embedding.ipynb`](./1.1open_ai/open_ai_embedding.ipynb) | Dense vector extraction using `text-embedding-3-small` / `ada-002` | `langchain-openai` |
+| **HuggingFace Embeddings** | [`hugging_face_embedding.ipynb`](./1.1open_ai/hugging_face_embedding.ipynb) | Open-source sentence-transformers (`all-MiniLM-L6-v2`) | `langchain-huggingface` |
+| **ChromaDB Vector Store** | [`croma_vector_db.ipynb`](./1.1open_ai/croma_vector_db.ipynb) | Local persistent vector indexing & similarity queries | `chromadb` |
+| **FAISS Vector Store** | [`faiss_vector_db.ipynb`](./1.1open_ai/faiss_vector_db.ipynb) | High-performance in-memory index creation and similarity scoring | `faiss-cpu` |
+| **Ollama Local LLMs** | [`1.2ollama/README.md`](./1.2ollama/README.md) | Local offline RAG, offline embeddings & open-weight model serving | `langchain-community`, Ollama |
+
+---
+
 ## 📂 Subdirectories
 
 - **[`1.1open_ai/`](./1.1open_ai/)** — Comprehensive notebooks for document ingestion, text splitting, OpenAI & HuggingFace embeddings, and Chroma & FAISS vector databases.

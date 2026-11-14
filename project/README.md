@@ -15,7 +15,6 @@ This module serves as the primary workspace for advanced LangChain techniques, i
   - Structured output extraction using Pydantic
   - Tool creation with `@tool` & function calling
 - **`chatbot.ipynb`** — Interactive chat notebook analyzing message types, reasoning tokens, and API error handling.
-- **`cloud_env.bat`** — Environment configuration script for setting up cloud SDK and runtime credentials.
 
 ---
 

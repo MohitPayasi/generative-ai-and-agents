@@ -1,7 +1,7 @@
 [project]
 name = "mohit-payasi"
 version = "0.1.0"
-description = "Add your description here"
+description = "Production-grade AI Engineering, LangChain pipelines, LangGraph agent systems, and Machine Learning algorithms."
 readme = "README.md"
 authors = [
     { name = "MohitPayasi", email = "itsmpayasi04@gmail.com" }

@@ -29,10 +29,7 @@ This folder contains implementations focused on deploying LangChain pipelines as
 - Deployed a robust ChatGroq agent service running with Uvicorn on `http://127.0.0.1:8000`.
 
 ### 3. `chatbot.ipynb`
-- Interactive Jupyter Notebook testing different prompt variations, system roles, and model outputs using Groq's high-speed inference.
-
-### 4. `test.ipynb`
-- Scratchpad notebook for validating components, testing parser behaviors, and debugging API connections.
+- Interactive Jupyter Notebook testing different prompt variations, translation chains, system roles, and model outputs using Groq's high-speed inference before deploying to FastAPI.
 
 ---
 
