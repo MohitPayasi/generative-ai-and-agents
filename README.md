@@ -17,7 +17,7 @@
 - [🧩 Modules Overview](#-modules-overview)
   - [1. LangChain Fundamentals (`1-langchain_basic/`)](#1-langchain-fundamentals-1-langchain_basic)
   - [2. End-to-End RAG, LCEL & Modern LangChain (`langchain_langgraph/`)](#2-end-to-end-rag-lcel--modern-langchain-langchain_langgraph)
-  - [3. Agentic Systems with LangGraph (`langraphproject/`)](#3-agentic-systems-with-langgraph-langraphproject)
+  - [3. Agentic Systems with LangGraph (`langgraphproject/`)](#3-agentic-systems-with-langgraph-langgraphproject)
   - [4. Advanced LangChain Features (`project/`)](#4-advanced-langchain-features-project)
   - [5. API Serving & Deployment (`practice/`)](#5-api-serving--deployment-practice)
   - [6. Machine Learning Foundations & Industry Projects (`Machine_learning/`)](#6-machine-learning-foundations--industry-projects-machine_learning)
@@ -45,7 +45,7 @@ mohit_payasi/
 │   ├── section_10/             # Modern LangChain: Dynamic Models, Messages, Tools, Structured Output & Agents
 │   └── README.md
 │
-├── langraphproject/            # Production Agent Systems built with LangGraph
+├── langgraphproject/           # Production Agent Systems built with LangGraph
 │   ├── basic_chat/             # StateGraph Nodes, Observability & Supervisor Multi-Agent System
 │   ├── main.py                 # Standalone StateGraph Agent with Gemini & LangSmith
 │   └── README.md
@@ -103,13 +103,13 @@ mohit_payasi/
 * **State Checkpointing**: Thread management using `langgraph.checkpoint.memory.MemorySaver`.
 * 👉 Check out [`langchain_langgraph/README.md`](./langchain_langgraph/README.md) for full module documentation.
 
-### 3. Agentic Systems with LangGraph (`langraphproject/`)
+### 3. Agentic Systems with LangGraph (`langgraphproject/`)
 * **StateGraph Architecture**: Cyclic graphs with shared `TypedDict` state schemas.
 * **Routing**: Dynamic branch execution using conditional edges and function tools.
 * **Supervisor-Worker Pattern**: Multi-agent coordination with planning, delegation to specialized researcher agents, iteration counters, and memory checkpointing.
 * **Model Dynamic Initialization**: Provider switching with `init_chat_model()`.
 * **Observability**: Production monitoring, latency tracing, and token tracking with **LangSmith**.
-* 👉 Check out [`langraphproject/README.md`](./langraphproject/README.md) for full module documentation.
+* 👉 Check out [`langgraphproject/README.md`](./langgraphproject/README.md) for full module documentation.
 
 ### 4. Advanced LangChain Features (`project/`)
 * **Structured Output**: Extracting schema-validated JSON directly into Pydantic models with `.with_structured_output()`.

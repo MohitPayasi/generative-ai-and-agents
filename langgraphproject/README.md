@@ -21,7 +21,7 @@ Quickly access individual agent implementations:
 ## 🗂️ Directory Structure
 
 ```text
-langraphproject/
+langgraphproject/
 ├── basic_chat/                           # Practical agent notebooks & patterns
 │   ├── basic_chat_1.ipynb                # StateGraph fundamentals (State, Nodes, Edges)
 │   ├── debug_monitoring.ipynb           # Dynamic init_chat_model, callbacks & ToolNode
@@ -70,7 +70,7 @@ flowchart TD
 
 ### 1. Navigate to Project
 ```bash
-cd langraphproject
+cd langgraphproject
 ```
 
 ### 2. Create Virtual Environment

@@ -17,12 +17,13 @@ This directory contains practical Jupyter Notebooks demonstrating stateful, grap
 
 ## 🚀 Detailed Notebook Breakdown
 
-### 1. `basic_chat_1.ipynb` — LangGraph Fundamentals
-* **State**: Defined a strongly-typed shared state schema using Python's `typing.TypedDict`.
-* **Nodes**: Implemented standalone computational functions (nodes) that read from and update the graph state.
-* **Edges**: Added standard directional edges connecting nodes, as well as `START` and `END` control nodes.
-* **Graph Compilation**: Compiled the `StateGraph` into an executable runnable using `.compile()`.
-* **Chat Node Implementation**: Connected a ChatGroq LLM inside a node to generate conversational responses.
+### 1. `basic_chat_1.ipynb` — LangGraph Fundamentals, Tools, Memory & HITL
+* **State & Reducer**: Defined shared state schema using `TypedDict` with `Annotated[list, add_messages]` reducer.
+* **Nodes & Edges**: Implemented computational nodes, directional edges, and `START` / `END` control nodes.
+* **ReAct Tool Execution**: Integrated `@tool` functions (`multiply`), model tool binding (`bind_tools`), and `ToolNode` with `tools_condition`.
+* **State Checkpointing**: Thread management and multi-turn conversation memory with `MemorySaver()`.
+* **Streaming Modes**: Real-time event and node updates streaming (`stream_mode="updates"`).
+* **Human-in-the-Loop (HITL)**: Workflow interruption before tool execution (`interrupt_before=["tools"]`) for manual review and resumption.
 
 ### 2. `debug_monitoring.ipynb` — Model Initialization & Observability
 * **Unified Model Initialization**:
