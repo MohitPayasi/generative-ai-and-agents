@@ -13,3 +13,10 @@ Jab bhi user kisi `.ipynb` (Jupyter Notebook) file mein kaam kare aur code likhe
 4. Ye markdown cells **notebook ke andar hi** code cells ke beech insert karo — koi alag file mat banao.
 5. Docstrings **simple English** mein likho — short and clean.
 6. Har naye code cell ke liye ek corresponding markdown documentation cell hona chahiye.
+
+## Git Commit Message Rule
+
+Jab bhi user koi code likhe ya koi task/feature complete kare:
+- Response ke aakhri mein **hamesha ek clean aur meaningful Git Commit Message** generate karke do (conventional commit format jaise `feat: ...`, `fix: ...`, `docs: ...`).
+- Isse user directly copy karke apne VS Code / Git commit message box mein paste kar sake.
+
